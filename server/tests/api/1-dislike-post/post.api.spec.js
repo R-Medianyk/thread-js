@@ -124,7 +124,7 @@ describe(`${normalizeTrailingSlash(joinPath(
           const dislikePostResponse = await app.inject()
             .put(postReactEndpoint)
             .headers({ authorization: `Bearer ${token}` })
-            .body({ postId, isLike: false });
+            .body({ postId });
 
           expect(dislikePostResponse.statusCode).toBe(HttpCode.OK);
           expect(dislikePostResponse.json()).toEqual(expect.objectContaining({
@@ -143,7 +143,7 @@ describe(`${normalizeTrailingSlash(joinPath(
           const dislikePostResponse = await app.inject()
             .put(postReactEndpoint)
             .headers({ authorization: `Bearer ${token}` })
-            .body({ postId, isLike: false });
+            .body({ postId });
 
           expect(dislikePostResponse.statusCode).toBe(HttpCode.OK);
           expect(dislikePostResponse.json()).toEqual(expect.objectContaining({
@@ -193,11 +193,11 @@ describe(`${normalizeTrailingSlash(joinPath(
           const dislikePostResponse = await app.inject()
             .put(postReactEndpoint)
             .headers({ authorization: `Bearer ${token}` })
-            .body({ postId, isLike: false });
+            .body({ postId, isLike: true });
           const likePostResponse = await app.inject()
             .put(postReactEndpoint)
             .headers({ authorization: `Bearer ${token}` })
-            .body({ postId, isLike: true });
+            .body({ postId, isLike: false });
 
           expect(likePostResponse.statusCode).toBe(HttpCode.OK);
           expect(dislikePostResponse.statusCode).toBe(HttpCode.OK);
